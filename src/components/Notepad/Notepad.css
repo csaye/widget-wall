@@ -1,0 +1,17 @@
+.Notepad {
+  display: flex;
+  flex-direction: column;
+}
+
+.Notepad h1 {
+  margin: 0 0 10px 0;
+  font-size: 24px;
+}
+
+.Notepad button {
+  margin-top: 10px;
+}
+
+.Notepad p {
+  margin: 10px 0 0 0;
+}

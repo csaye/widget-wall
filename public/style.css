@@ -6,6 +6,10 @@ button {
   cursor: pointer;
 }
 
+textarea {
+  resize: none;
+}
+
 /* Widget */
 
 .widget {
