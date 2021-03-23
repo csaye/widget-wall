@@ -1,0 +1,10 @@
+.CoinFlip button {
+  width: 150px;
+  height: 60px;
+  font-size: 24px;
+}
+
+.CoinFlip p {
+  margin: 0;
+  font-size: 32px;
+}
