@@ -4,12 +4,26 @@ import './DiceRoll.css';
 
 function DiceRoll() {
   const [roll, setRoll] = useState(undefined);
-  const [min, setMin] = useState(1);
-  const [max, setMax] = useState(6);
+  const [min, setMin] = useState("1");
+  const [max, setMax] = useState("6");
+  const [intMin, setIntMin] = useState(1);
+  const [intMax, setIntMax] = useState(6);
+
+  function trySetMin(value) {
+    const int = parseInt(value);
+    if (!isNaN(int)) setIntMin(int);
+    setMin(value);
+  }
+
+  function trySetMax(value) {
+    const int = parseInt(value);
+    if (!isNaN(int)) setIntMax(int);
+    setMax(value);
+  }
 
   function rollDice(e) {
     e.preventDefault();
-    const random = Math.floor(Math.random() * ((max + 1) - min)) + min;
+    const random = Math.floor(Math.random() * ((intMax + 1) - intMin)) + intMin;
     setRoll(random);
   }
 
@@ -17,9 +31,9 @@ function DiceRoll() {
     <div className="DiceRoll widget">
       <form onSubmit={rollDice}>
         <label htmlFor="diceroll-min">Min (inclusive)</label>
-        <input id="diceroll-min" value={min} min="0" max={max} type="number" onChange={e => setMin(e.target.valueAsNumber)} />
+        <input id="diceroll-min" value={min} max={intMax} type="number" onChange={e => trySetMin(e.target.value)} required />
         <label htmlFor="diceroll-max">Max (inclusive)</label>
-        <input id="diceroll-max" value={max} min={min} type="number" onChange={e => setMax(e.target.valueAsNumber)} />
+        <input id="diceroll-max" value={max} min={intMin} type="number" onChange={e => trySetMax(e.target.value)} required />
         <button type="submit">Roll Dice</button>
       </form>
       {
