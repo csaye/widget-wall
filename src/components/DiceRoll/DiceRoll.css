@@ -1,0 +1,9 @@
+.DiceRoll form {
+  display: flex;
+  flex-direction: column;
+}
+
+.DiceRoll p {
+  margin: 0;
+  font-size: 32px;
+}
