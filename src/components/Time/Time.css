@@ -1,0 +1,13 @@
+.Time {
+  background: #efefef;
+  width: fit-content;
+  margin: 20px auto;
+  text-align: center;
+  border-radius: 20px;
+  padding: 10px 20px;
+}
+
+.Time p {
+  margin: 0;
+  font-size: 32px;
+}
