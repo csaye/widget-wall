@@ -1,3 +1,19 @@
 * {
   font-family: 'Roboto Mono', monospace;
 }
+
+button {
+  cursor: pointer;
+}
+
+/* Widget */
+
+.widget {
+  background: #efefef;
+  width: fit-content;
+  height: fit-content;
+  margin: 20px;
+  text-align: center;
+  border-radius: 20px;
+  padding: 10px 20px;
+}

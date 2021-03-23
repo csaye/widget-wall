@@ -16,7 +16,7 @@ function Time() {
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
-    <div className="Time">
+    <div className="Time widget">
       <p>{currentTime.toDateString()}</p>
       <p>{currentTime.toLocaleTimeString()}</p>
     </div>
