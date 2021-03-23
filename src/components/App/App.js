@@ -9,6 +9,7 @@ import CoinFlip from '../CoinFlip/CoinFlip.js';
 import DiceRoll from '../DiceRoll/DiceRoll.js';
 import SignIn from '../SignIn/SignIn.js';
 import SignOut from '../SignOut/SignOut.js';
+import Color from '../Color/Color.js';
 
 import './App.css';
 
@@ -27,6 +28,7 @@ function App() {
           <Time />
           <CoinFlip />
           <DiceRoll />
+          <Color />
         </> :
         <SignIn />
       }

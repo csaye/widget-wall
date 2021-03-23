@@ -17,3 +17,9 @@ button {
   border-radius: 20px;
   padding: 10px 20px;
 }
+
+/* Colors */
+
+.success {
+  color: green;
+}
