@@ -7,3 +7,9 @@
   margin: 0;
   font-size: 32px;
 }
+
+.DiceRoll button {
+  padding: 10px;
+  margin-top: 10px;
+  font-size: 24px;
+}

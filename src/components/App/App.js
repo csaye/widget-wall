@@ -7,6 +7,8 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import Time from '../Time/Time.js';
 import CoinFlip from '../CoinFlip/CoinFlip.js';
 import DiceRoll from '../DiceRoll/DiceRoll.js';
+import SignIn from '../SignIn/SignIn.js';
+import SignOut from '../SignOut/SignOut.js';
 
 import './App.css';
 
@@ -17,9 +19,18 @@ function App() {
 
   return (
     <div className="App">
-      <Time />
-      <CoinFlip />
-      <DiceRoll />
+      <div className="widgets">
+      {
+        firebase.auth().currentUser ?
+        <>
+          <SignOut />
+          <Time />
+          <CoinFlip />
+          <DiceRoll />
+        </> :
+        <SignIn />
+      }
+      </div>
     </div>
   );
 }
