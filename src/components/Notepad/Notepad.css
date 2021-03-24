@@ -3,10 +3,6 @@
   flex-direction: column;
 }
 
-.Notepad button {
-  margin-top: 10px;
-}
-
 .Notepad p {
   margin: 10px 0 0 0;
 }

@@ -1,12 +1,3 @@
-.TempConvert form {
-  display: flex;
-  flex-direction: column;
-}
-
-.TempConvert button {
-  margin-top: 10px;
-}
-
 .TempConvert p {
   margin: 0;
   font-size: 32px;

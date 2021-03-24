@@ -10,17 +10,19 @@ function TempConvert() {
 
   function convertTemp(e) {
     e.preventDefault();
-    const intIn = parseInt(inTemp);
-    if (inUnit === outUnit) setOutTemp(intIn.toString() + outUnit);
+    const tempIn = parseFloat(inTemp);
+    // if same unit
+    if (inUnit === outUnit) setOutTemp(tempIn + outUnit);
+    // celsius to fahrenheit
     else if (outUnit === "F") {
-      const rawOut = intIn * 9 / 5 + 32;
-      const intOut = Math.round(rawOut * 100) / 100;
-      setOutTemp(intOut.toString() + outUnit);
-    }
-    else {
-      const rawOut = (intIn - 32) * 5 / 9;
-      const intOut = Math.round(rawOut * 100) / 100;
-      setOutTemp(intOut.toString() + outUnit);
+      const rawTempOut = tempIn * 9 / 5 + 32;
+      const tempOut = Math.round(rawTempOut * 100) / 100;
+      setOutTemp(tempOut + outUnit);
+    // fahrenheit to celsius
+    } else {
+      const rawTempOut = (tempIn - 32) * 5 / 9;
+      const tempOut = Math.round(rawTempOut * 100) / 100;
+      setOutTemp(tempOut + outUnit);
     }
   }
 
@@ -29,7 +31,7 @@ function TempConvert() {
       <h1>Temp Convert</h1>
       <form onSubmit={convertTemp}>
         <label htmlFor="tempconvert-intemp">Temperature</label>
-        <input id="baseconvert-intemp" value={inTemp} type="number" onChange={e => setInTemp(e.target.value)} required />
+        <input id="baseconvert-intemp" value={inTemp} type="number" step="any" onChange={e => setInTemp(e.target.value)} required />
         <label htmlFor="tempconvert-inunit">In Unit</label>
         <select id="tempconvert-inunit" value={inUnit} onChange={e => setInUnit(e.target.value)}>
           <option value="C">Celsius</option>

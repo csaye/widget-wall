@@ -28,6 +28,15 @@ textarea {
   text-decoration: underline;
 }
 
+.widget form {
+  display: flex;
+  flex-direction: column;
+}
+
+.widget form button {
+  margin-top: 10px;
+}
+
 /* Colors */
 
 .success {

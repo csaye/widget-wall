@@ -10,9 +10,11 @@ function BaseConvert() {
 
   function convertBase(e) {
     e.preventDefault();
-    const intIn = parseInt(inNum, inBase);
-    const intOut = intIn.toString(outBase).toUpperCase();
-    setOutNum(intOut);
+    // get num in in base
+    const numIn = parseInt(inNum, inBase);
+    // convert num to out base
+    const numOut = numIn.toString(outBase).toUpperCase();
+    setOutNum(numOut);
   }
 
   return (
