@@ -1,0 +1,13 @@
+.BaseConvert form {
+  display: flex;
+  flex-direction: column;
+}
+
+.BaseConvert button {
+  margin-top: 10px;
+}
+
+.BaseConvert p {
+  margin: 0;
+  font-size: 32px;
+}

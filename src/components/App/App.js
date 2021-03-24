@@ -11,6 +11,7 @@ import SignIn from '../SignIn/SignIn.js';
 import SignOut from '../SignOut/SignOut.js';
 import Color from '../Color/Color.js';
 import Notepad from '../Notepad/Notepad.js';
+import BaseConvert from '../BaseConvert/BaseConvert.js';
 
 import './App.css';
 
@@ -31,6 +32,7 @@ function App() {
           <DiceRoll />
           <Color />
           <Notepad />
+          <BaseConvert />
         </> :
         <SignIn />
       }
