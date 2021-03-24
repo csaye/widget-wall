@@ -8,7 +8,7 @@ function BaseConvert() {
   const [inBase, setInBase] = useState("10");
   const [outBase, setOutBase] = useState("10");
 
-  function convert(e) {
+  function convertBase(e) {
     e.preventDefault();
     const intIn = parseInt(inNum, inBase);
     const intOut = intIn.toString(outBase).toUpperCase();
@@ -17,8 +17,9 @@ function BaseConvert() {
 
   return (
     <div className="BaseConvert widget">
-      <form onSubmit={convert}>
-        <label htmlFor="baseconvert-innum">In Number</label>
+      <h1>Base Convert</h1>
+      <form onSubmit={convertBase}>
+        <label htmlFor="baseconvert-innum">Number</label>
         <input id="baseconvert-innum" value={inNum} pattern="[A-Za-z0-9]+" onChange={e => setInNum(e.target.value)} required />
         <label htmlFor="baseconvert-inbase">In Base</label>
         <input id="baseconvert-inbase" value={inBase} min="2" max="36" type="number" onChange={e => setInBase(e.target.value)} required />

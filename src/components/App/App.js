@@ -12,6 +12,7 @@ import SignOut from '../SignOut/SignOut.js';
 import Color from '../Color/Color.js';
 import Notepad from '../Notepad/Notepad.js';
 import BaseConvert from '../BaseConvert/BaseConvert.js';
+import TempConvert from '../TempConvert/TempConvert.js';
 
 import './App.css';
 
@@ -33,6 +34,7 @@ function App() {
           <Color />
           <Notepad />
           <BaseConvert />
+          <TempConvert />
         </> :
         <SignIn />
       }

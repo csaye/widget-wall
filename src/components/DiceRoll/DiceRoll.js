@@ -29,6 +29,7 @@ function DiceRoll() {
 
   return (
     <div className="DiceRoll widget">
+      <h1>Dice Roll</h1>
       <form onSubmit={rollDice}>
         <label htmlFor="diceroll-min">Min (inclusive)</label>
         <input id="diceroll-min" value={min} max={intMax} type="number" onChange={e => trySetMin(e.target.value)} required />

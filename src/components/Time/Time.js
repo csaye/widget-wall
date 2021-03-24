@@ -17,6 +17,7 @@ function Time() {
 
   return (
     <div className="Time widget">
+      <h1>Time and Date</h1>
       <p>{currentTime.toDateString()}</p>
       <p>{currentTime.toLocaleTimeString()}</p>
     </div>

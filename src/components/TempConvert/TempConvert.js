@@ -26,6 +26,7 @@ function TempConvert() {
 
   return (
     <div className="TempConvert widget">
+      <h1>Temp Convert</h1>
       <form onSubmit={convertTemp}>
         <label htmlFor="tempconvert-intemp">Temperature</label>
         <input id="baseconvert-intemp" value={inTemp} type="number" onChange={e => setInTemp(e.target.value)} required />

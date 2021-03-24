@@ -12,6 +12,7 @@ function CoinFlip() {
 
   return (
     <div className="CoinFlip widget">
+      <h1>Coin Flip</h1>
       <button onClick={flipCoin}>Flip Coin</button>
       {
         heads !== undefined &&

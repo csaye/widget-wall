@@ -27,6 +27,7 @@ function Color() {
 
   return (
     <div className="Color widget">
+      <h1>Random Color</h1>
       <button onClick={generateColor}>Generate Color</button>
       {
         color &&
