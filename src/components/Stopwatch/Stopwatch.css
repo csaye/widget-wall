@@ -1,0 +1,9 @@
+.Stopwatch {
+  display: flex;
+  flex-direction: column;
+}
+
+.Stopwatch p {
+  font-size: 24px;
+  margin: 0;
+}
