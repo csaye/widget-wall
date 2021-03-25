@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
+import firebase from 'firebase/app';
+
 import './Timer.css';
 
 let h = 0;
@@ -14,6 +16,9 @@ function Timer() {
   const [seconds, setSeconds] = useState("0");
 
   const [display, setDisplay] = useState("00:00:00");
+
+  const uid = firebase.auth().currentUser.uid;
+  const timerRef = firebase.firestore().collection('timer').doc(uid);
 
   // updates display
   function updateDisplay() {
@@ -45,7 +50,6 @@ function Timer() {
 
   useEffect(() => {
     let lastTime = new Date();
-
     const timeInterval = setInterval(() => {
       if (running) {
         const newDate = new Date();
@@ -58,12 +62,83 @@ function Timer() {
     return () => clearInterval(timeInterval);
   }, [running]); // eslint-disable-line react-hooks/exhaustive-deps
 
+  function getTime() {
+    timerRef.get().then(doc => {
+      if (doc.exists) {
+        const docData = doc.data();
+        h = docData.hours;
+        m = docData.minutes;
+        s = docData.seconds;
+        // if running, calculate delta
+        if (docData.running) {
+          // subtract seconds delta
+          let secondsDelta = Math.floor((new Date() - docData.startTime) / 1000);
+          let totalSeconds = (h * 3600) + (m * 60) + s;
+          totalSeconds -= secondsDelta;
+          // clamp above zero
+          if (totalSeconds < 0) {
+            h = 0;
+            m = 0;
+            s = 0;
+          } else {
+            h = Math.floor(totalSeconds / 3600);
+            m = Math.floor((totalSeconds % 3600) / 60);
+            s = Math.floor(totalSeconds % 60);
+          }
+          // start running
+          setRunning(true);
+        }
+        updateDisplay();
+      }
+    });
+  }
+
+  useEffect(() => {
+    // get time on start
+    getTime();
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
   function setTimer(e) {
     e.preventDefault();
-    h = hours;
-    m = minutes;
-    s = seconds;
+    h = parseInt(hours);
+    m = parseInt(minutes);
+    s = parseInt(seconds);
     updateDisplay();
+    // update firebase
+    const startTime = new Date().getTime();
+    timerRef.set({
+      startTime: startTime,
+      running: running,
+      hours: h,
+      minutes: m,
+      seconds: s
+    });
+  }
+
+  function stopTimer() {
+    setRunning(false);
+    // update firebase
+    const startTime = new Date().getTime();
+    timerRef.set({
+      startTime: startTime,
+      running: false,
+      hours: h,
+      minutes: m,
+      seconds: s
+    });
+  }
+
+  function startTimer() {
+    setRunning(true);
+    // update firebase
+    const startTime = new Date().getTime();
+    timerRef.set({
+      startTime: startTime,
+      running: true,
+      hours: h,
+      minutes: m,
+      seconds: s
+    });
   }
 
   return (
@@ -81,8 +156,8 @@ function Timer() {
       <p>{display}</p>
       {
         running ?
-        <button onClick={() => setRunning(false)}>Stop Timer</button> :
-        <button onClick={() => setRunning(true)}>Start Timer</button>
+        <button onClick={stopTimer}>Stop Timer</button> :
+        <button onClick={startTimer}>Start Timer</button>
       }
     </div>
   );
