@@ -1,0 +1,12 @@
+.Timer form {
+  display: inline;
+}
+
+.Timer input {
+  width: 32px;
+}
+
+.Timer p {
+  margin: 10px 0;
+  font-size: 24px;
+}
