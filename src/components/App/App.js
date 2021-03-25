@@ -14,6 +14,8 @@ import Notepad from '../Notepad/Notepad.js';
 import BaseConvert from '../BaseConvert/BaseConvert.js';
 import TempConvert from '../TempConvert/TempConvert.js';
 import DistConvert from '../DistConvert/DistConvert.js';
+import Stopwatch from '../Stopwatch/Stopwatch.js';
+import Timer from '../Timer/Timer.js';
 
 import './App.css';
 
@@ -37,6 +39,8 @@ function App() {
           <BaseConvert />
           <TempConvert />
           <DistConvert />
+          <Stopwatch />
+          <Timer />
         </> :
         <SignIn />
       }

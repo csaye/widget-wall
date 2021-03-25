@@ -7,3 +7,7 @@
   font-size: 24px;
   margin: 0;
 }
+
+.Stopwatch button:first-of-type {
+  margin-bottom: 5px;
+}

@@ -6,9 +6,12 @@ function Time() {
   const [currentTime, setCurrentTime] = useState(new Date());
 
   useEffect(() => {
+    let lastTime = new Date();
+
     const timeInterval = setInterval(() => {
       const newDate = new Date();
-      if (newDate.getSeconds() !== currentTime.getSeconds()) {
+      if (newDate.getSeconds() !== lastTime.getSeconds()) {
+        lastTime = newDate;
         setCurrentTime(newDate);
       }
     }, 100);

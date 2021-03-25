@@ -30,6 +30,7 @@ function DistConvert() {
     else if (outUnit === "mi") factor *= (1 / miToM);
     else if (outUnit === "f") factor *= (1 / fToM);
     else if (outUnit === "in") factor *= (1 / inToM);
+    // calculate dist out
     let distOut = distIn * factor;
     // round to three decimal places
     distOut = Math.round(distOut * 1000) / 1000;
