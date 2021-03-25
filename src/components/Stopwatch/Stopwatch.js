@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
+import firebase from 'firebase/app';
+
 import './Stopwatch.css';
 
 function Stopwatch() {
@@ -7,6 +9,9 @@ function Stopwatch() {
   const [startTime, setStartTime] = useState(new Date());
   const [deltaMs, setDeltaMs] = useState(0);
   const [deltaTime, setDeltaTime] = useState("00:00:00");
+
+  const uid = firebase.auth().currentUser.uid;
+  const stopwatchRef = firebase.firestore().collection('stopwatch').doc(uid);
 
   function formatTime(ms) {
     let hours = 0;
@@ -44,19 +49,61 @@ function Stopwatch() {
     return () => clearInterval(timeInterval);
   }, [running, startTime]);
 
+  function getData() {
+    stopwatchRef.get().then(doc => {
+      if (doc.exists) {
+        // get doc data
+        const docData = doc.data();
+        const msDelta = docData.deltaMs;
+        const timeStart = docData.startTime;
+        const timeDelta = running ? formatTime(new Date() - timeStart) : formatTime(msDelta);
+        // update hooks
+        setStartTime(timeStart);
+        setRunning(docData.running);
+        setDeltaMs(msDelta);
+        setDeltaTime(timeDelta);
+      }
+    });
+  }
+
+  useEffect(() => {
+    // get data on start
+    getData();
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
   function stopStopwatch() {
     setRunning(false);
+    // update firebase
+    stopwatchRef.set({
+      running: false,
+      startTime: startTime,
+      deltaMs: deltaMs
+    });
   }
 
   function startStopwatch() {
-    setStartTime(new Date() - deltaMs);
+    const timeStart = new Date() - deltaMs;
+    setStartTime(timeStart);
     setRunning(true);
+    // update firebase
+    stopwatchRef.set({
+      running: true,
+      startTime: timeStart,
+      deltaMs: deltaMs
+    });
   }
 
   function resetStopwatch() {
+    const timeStart = new Date().getTime();
     setDeltaMs(0);
-    setStartTime(new Date());
+    setStartTime(timeStart);
     setDeltaTime("00:00:00");
+    // update firebase
+    stopwatchRef.set({
+      running: running,
+      startTime: timeStart,
+      deltaMs: 0
+    });
   }
 
   return (
