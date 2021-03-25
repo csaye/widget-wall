@@ -16,6 +16,7 @@ import TempConvert from '../TempConvert/TempConvert.js';
 import DistConvert from '../DistConvert/DistConvert.js';
 import Stopwatch from '../Stopwatch/Stopwatch.js';
 import Timer from '../Timer/Timer.js';
+import CaesarShift from '../CaesarShift/CaesarShift.js';
 
 import './App.css';
 
@@ -41,6 +42,7 @@ function App() {
           <DistConvert />
           <Stopwatch />
           <Timer />
+          <CaesarShift />
         </> :
         <SignIn />
       }

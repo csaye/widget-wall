@@ -1,0 +1,9 @@
+.CaesarShift {
+  max-width: 174px;
+}
+
+.CaesarShift p {
+  margin: 5px 0;
+  font-size: 24px;
+  word-break: break-word;
+}
