@@ -17,6 +17,7 @@ import DistConvert from '../DistConvert/DistConvert.js';
 import Stopwatch from '../Stopwatch/Stopwatch.js';
 import Timer from '../Timer/Timer.js';
 import CaesarShift from '../CaesarShift/CaesarShift.js';
+import MorseCode from '../MorseCode/MorseCode.js';
 
 import './App.css';
 
@@ -43,6 +44,7 @@ function App() {
           <Stopwatch />
           <Timer />
           <CaesarShift />
+          <MorseCode/>
         </> :
         <SignIn />
       }
