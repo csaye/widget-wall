@@ -69,7 +69,13 @@ function Calculator() {
         {operator && <>{operator}</>}
         {operandB && <>{operandB}</>}
       </p>
-      {result && <p>{result}</p>}
+      {
+        result &&
+        <>
+          <p className="equal-sign">=</p>
+          <p>{result}</p>
+        </>
+      }
     </div>
   );
 }

@@ -71,7 +71,7 @@ function MorseCode() {
 
   return (
     <div className="MorseCode widget">
-      <h1>MorseCode</h1>
+      <h1>Morse Code</h1>
       <form onSubmit={convertText}>
         <label htmlFor="morsecode-intext">Text</label>
         <input id="morsecode-intext" value={inText} onChange={e => setInText(e.target.value)} required />
