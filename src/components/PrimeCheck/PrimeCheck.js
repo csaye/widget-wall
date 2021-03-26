@@ -29,7 +29,8 @@ function PrimeCheck() {
     <div className="PrimeCheck widget">
       <h1>Prime Check</h1>
       <form onSubmit={checkPrime}>
-        <input value={number} type="number" min="2" onChange={e => setNumber(e.target.value)} required />
+        <label htmlFor="primecheck-number">Number</label>
+        <input id="primecheck-number" value={number} type="number" min="2" onChange={e => setNumber(e.target.value)} required />
         <button type="submit">Check</button>
       </form>
       {result && <p>{result}</p>}
