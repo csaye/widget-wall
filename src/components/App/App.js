@@ -20,6 +20,7 @@ import CaesarShift from '../CaesarShift/CaesarShift.js';
 import MorseCode from '../MorseCode/MorseCode.js';
 import Calculator from '../Calculator/Calculator.js';
 import PrimeCheck from '../PrimeCheck/PrimeCheck.js';
+import RockPaperScissors from '../RockPaperScissors/RockPaperScissors.js';
 
 import './App.css';
 
@@ -49,6 +50,7 @@ function App() {
           <MorseCode/>
           <Calculator />
           <PrimeCheck />
+          <RockPaperScissors />
         </> :
         <SignIn />
       }
