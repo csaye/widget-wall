@@ -1,7 +1,7 @@
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
-import { firebaseConfig } from '../../util/firebaseConfig.js';
+import { firebaseConfig } from '../../util/config/firebaseConfig.js';
 import { useAuthState } from 'react-firebase-hooks/auth';
 
 import Time from '../Time/Time.js';
