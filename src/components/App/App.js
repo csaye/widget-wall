@@ -21,6 +21,7 @@ import MorseCode from '../MorseCode/MorseCode.js';
 import Calculator from '../Calculator/Calculator.js';
 import PrimeCheck from '../PrimeCheck/PrimeCheck.js';
 import RockPaperScissors from '../RockPaperScissors/RockPaperScissors.js';
+import LinkShorten from '../LinkShorten/LinkShorten.js';
 
 import './App.css';
 
@@ -51,6 +52,7 @@ function App() {
           <Calculator />
           <PrimeCheck />
           <RockPaperScissors />
+          <LinkShorten />
         </> :
         <SignIn />
       }
