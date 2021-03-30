@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import firebase from 'firebase/app';
 
@@ -14,17 +14,25 @@ function Background() {
 
   async function updateBackground(e) {
     e.preventDefault();
-    await backgroundRef.put(backgroundFile);
+    await backgroundRef.put(backgroundFile)
+    .then(() => getBackgroundURL())
+    .catch(e => console.log(e));
   }
 
+  async function getBackgroundURL() {
+    await backgroundRef.getDownloadURL()
+    .then(bURL => setBackgroundURL(bURL))
+    .catch(e => console.log(e));
+  }
+
+  // get background URL on start
+  useEffect(() => {
+    getBackgroundURL();
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
   return (
-    <>
-      <img
-        className="background-img"
-        src={defaultBackground}
-        alt=""
-      />
-      <div className="Background widget">
+    <div className="Background">
+      <div className="widget">
         <h1>Background</h1>
         <form onSubmit={updateBackground}>
           <input
@@ -36,7 +44,12 @@ function Background() {
           <button type="submit">Update Background</button>
         </form>
       </div>
-    </>
+      <img
+        className="background-img"
+        src={backgroundURL ? backgroundURL : defaultBackground}
+        alt=""
+      />
+    </div>
   );
 }
 
