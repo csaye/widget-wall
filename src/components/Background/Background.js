@@ -8,6 +8,7 @@ import './Background.css';
 function Background() {
   const [backgroundFile, setBackgroundFile] = useState(undefined);
   const [backgroundURL, setBackgroundURL] = useState(undefined);
+  const [loaded, setLoaded] = useState(false);
 
   const uid = firebase.auth().currentUser.uid;
   const backgroundRef = firebase.storage().ref('backgrounds/' + uid + '/background');
@@ -20,14 +21,33 @@ function Background() {
   }
 
   async function getBackgroundURL() {
+    // get background url
     await backgroundRef.getDownloadURL()
-    .then(bURL => setBackgroundURL(bURL))
-    .catch(e => console.log(e));
+    .then(bURL => {
+      setBackgroundURL(bURL);
+      setLoaded(true);
+    })
+    .catch(e => {
+      console.log(e);
+      setLoaded(true);
+    });
   }
 
-  // get background URL on start
+  async function checkBackgroundURL() {
+    // if background file exists
+    const files = await firebase.storage().ref('backgrounds/' + uid).listAll();
+    if (files.items.length > 0) {
+      // get background url
+      getBackgroundURL();
+    // if no file to load, loading done
+    } else {
+      setLoaded(true);
+    }
+  }
+
+  // check background URL on start
   useEffect(() => {
-    getBackgroundURL();
+    checkBackgroundURL();
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
@@ -44,11 +64,14 @@ function Background() {
           <button type="submit">Update Background</button>
         </form>
       </div>
-      <img
-        className="background-img"
-        src={backgroundURL ? backgroundURL : defaultBackground}
-        alt=""
-      />
+      {
+        loaded &&
+        <img
+          className="background-img"
+          src={backgroundURL ? backgroundURL : defaultBackground}
+          alt=""
+        />
+      }
     </div>
   );
 }
