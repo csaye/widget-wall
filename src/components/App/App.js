@@ -22,6 +22,7 @@ import Calculator from '../Calculator/Calculator.js';
 import PrimeCheck from '../PrimeCheck/PrimeCheck.js';
 import RockPaperScissors from '../RockPaperScissors/RockPaperScissors.js';
 import LinkShorten from '../LinkShorten/LinkShorten.js';
+import TextCount from '../TextCount/TextCount.js';
 
 import './App.css';
 
@@ -53,6 +54,7 @@ function App() {
           <PrimeCheck />
           <RockPaperScissors />
           <LinkShorten />
+          <TextCount />
         </> :
         <SignIn />
       }
