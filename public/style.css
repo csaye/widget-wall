@@ -23,7 +23,7 @@ textarea {
 /* Widget */
 
 .widget {
-  background-color: rgba(239, 239, 239, 0.8);
+  background-color: rgba(239, 239, 239, 0.85);
   width: fit-content;
   height: fit-content;
   margin: 20px;
@@ -56,4 +56,8 @@ textarea {
 
 .success {
   color: green;
+}
+
+.error {
+  color: red;
 }

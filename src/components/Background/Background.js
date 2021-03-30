@@ -7,17 +7,33 @@ import './Background.css';
 
 function Background() {
   const [backgroundFile, setBackgroundFile] = useState(undefined);
-  const [backgroundURL, setBackgroundURL] = useState(undefined);
-  const [loaded, setLoaded] = useState(false);
+  const [backgroundURL, setBackgroundURL] = useState(undefined);;
+
+  const [loaded, setLoaded] = useState(false)
+  const [success, setSuccess] = useState('');
+  const [error, setError] = useState('');
 
   const uid = firebase.auth().currentUser.uid;
   const backgroundRef = firebase.storage().ref('backgrounds/' + uid + '/background');
 
   async function updateBackground(e) {
     e.preventDefault();
+    setSuccess('');
+    setError('');
     await backgroundRef.put(backgroundFile)
-    .then(() => getBackgroundURL())
-    .catch(e => console.log(e));
+    .then(() => {
+      setSuccess('Background successfully updated.');
+      setTimeout(() => {
+        setSuccess('');
+      }, 3000);
+      getBackgroundURL();
+    })
+    .catch(e => {
+      setError('Please upload an image with a file size under 5MB.')
+      setTimeout(() => {
+        setError('');
+      }, 3000);
+    });
   }
 
   async function getBackgroundURL() {
@@ -63,6 +79,8 @@ function Background() {
             />
           <button type="submit">Update Background</button>
         </form>
+        {success && <p className="success">{success}</p>}
+        {error && <p className="error">{error}</p>}
       </div>
       {
         loaded &&
