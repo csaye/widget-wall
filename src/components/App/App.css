@@ -6,3 +6,12 @@
   display: flex;
   flex-wrap: wrap;
 }
+
+.App .background-img {
+  z-index: -1;
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

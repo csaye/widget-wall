@@ -23,7 +23,9 @@ import PrimeCheck from '../PrimeCheck/PrimeCheck.js';
 import RockPaperScissors from '../RockPaperScissors/RockPaperScissors.js';
 import LinkShorten from '../LinkShorten/LinkShorten.js';
 import TextCount from '../TextCount/TextCount.js';
+import ClickCount from '../ClickCount/ClickCount.js';
 
+import defaultBackground from '../../img/default.jpg';
 import './App.css';
 
 firebase.initializeApp(firebaseConfig);
@@ -33,6 +35,7 @@ function App() {
 
   return (
     <div className="App">
+      <img className="background-img" src={defaultBackground} alt="" />
       <div className="widgets">
       {
         firebase.auth().currentUser ?
@@ -55,6 +58,7 @@ function App() {
           <RockPaperScissors />
           <LinkShorten />
           <TextCount />
+          <ClickCount />
         </> :
         <SignIn />
       }
