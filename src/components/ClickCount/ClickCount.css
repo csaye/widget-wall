@@ -1,3 +1,8 @@
 .ClickCount button {
   height: 50px;
+  margin: 5px 0 0 0;
+}
+
+.ClickCount p {
+  margin: 5px 0;
 }
