@@ -41,7 +41,7 @@ function RockPaperScissors() {
           <option value="Paper">Paper</option>
           <option value="Scissors">Scissors</option>
         </select>
-        <button onClick="submit">Play</button>
+        <button type="submit">Play</button>
       </form>
       {handOut && <p>{handOut}</p>}
       {result && <p style={{color: resColor}}>{result}</p>}
