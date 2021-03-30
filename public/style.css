@@ -23,13 +23,13 @@ textarea {
 /* Widget */
 
 .widget {
-  background: #efefef;
+  background-color: rgba(239, 239, 239, 0.8);
   width: fit-content;
   height: fit-content;
   margin: 20px;
   text-align: center;
   border-radius: 20px;
-  padding: 10px 20px;
+  padding: 12px;
   box-shadow: 0 0 5px #999;
   transition: 0.2s;
 }
@@ -41,7 +41,6 @@ textarea {
 .widget h1 {
   margin: 0 0 5px 0;
   font-size: 24px;
-  text-decoration: underline;
 }
 
 .widget form {

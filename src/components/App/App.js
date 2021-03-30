@@ -1,6 +1,7 @@
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
+import 'firebase/storage';
 import { firebaseConfig } from '../../util/config/firebaseConfig.js';
 import { useAuthState } from 'react-firebase-hooks/auth';
 
@@ -24,8 +25,8 @@ import RockPaperScissors from '../RockPaperScissors/RockPaperScissors.js';
 import LinkShorten from '../LinkShorten/LinkShorten.js';
 import TextCount from '../TextCount/TextCount.js';
 import ClickCount from '../ClickCount/ClickCount.js';
+import Background from '../Background/Background.js';
 
-import defaultBackground from '../../img/default.jpg';
 import './App.css';
 
 firebase.initializeApp(firebaseConfig);
@@ -35,7 +36,6 @@ function App() {
 
   return (
     <div className="App">
-      <img className="background-img" src={defaultBackground} alt="" />
       <div className="widgets">
       {
         firebase.auth().currentUser ?
@@ -52,13 +52,14 @@ function App() {
           <Stopwatch />
           <Timer />
           <CaesarShift />
-          <MorseCode/>
+          <MorseCode />
           <Calculator />
           <PrimeCheck />
           <RockPaperScissors />
           <LinkShorten />
           <TextCount />
           <ClickCount />
+          <Background />
         </> :
         <SignIn />
       }
