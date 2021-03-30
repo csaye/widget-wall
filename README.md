@@ -2,6 +2,28 @@
 
 A webpage with a collection of useful widgets.
 
+## Widgets
+
+- SignOut
+- Time
+- CoinFlip
+- DiceRoll
+- Color
+- Notepad
+- BaseConvert
+- TempConvert
+- DistConvert
+- Stopwatch
+- Timer
+- CaesarShift
+- MorseCode
+- Calculator
+- PrimeCheck
+- RockPaperScissors
+- LinkShorten
+- TextCount
+- ClickCount
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
