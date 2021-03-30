@@ -23,8 +23,7 @@ A webpage with a collection of useful widgets.
 - LinkShorten
 - TextCount
 - ClickCount
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- Background
 
 ## Available Scripts
 
