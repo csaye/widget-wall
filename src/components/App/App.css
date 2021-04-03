@@ -4,6 +4,7 @@
 }
 
 .App .widgets {
+  min-height: calc(100% - 40px);
   margin: 20px;
   display: flex;
   flex-wrap: wrap;
