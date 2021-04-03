@@ -28,7 +28,6 @@ function LinkShorten() {
       throw new Error('Search request failed!');
     }, networkError => console.log(networkError.message))
     .then(jsonResponse => {
-      console.log(jsonResponse);
       setShortUrl(jsonResponse.link);
     });
   }
