@@ -2,17 +2,6 @@
   max-width: 272px;
 }
 
-.Background .background-img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  pointer-events: none;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
 .Background p {
   margin: 5px 0;
 }

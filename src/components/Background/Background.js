@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 
 import firebase from 'firebase/app';
 
+import BackgroundImage from '../BackgroundImage/BackgroundImage.js';
+
 import defaultBackground from '../../img/default.jpg';
 import './Background.css';
 
@@ -67,8 +69,8 @@ function Background() {
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
-    <div className="Background">
-      <div className="widget">
+    <>
+      <div className="Background widget">
         <h1>Background</h1>
         <form onSubmit={updateBackground}>
           <input
@@ -84,13 +86,9 @@ function Background() {
       </div>
       {
         loaded &&
-        <img
-          className="background-img"
-          src={backgroundURL ? backgroundURL : defaultBackground}
-          alt=""
-        />
+        <BackgroundImage src={backgroundURL ? backgroundURL : defaultBackground} />
       }
-    </div>
+    </>
   );
 }
 
