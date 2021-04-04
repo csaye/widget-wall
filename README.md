@@ -4,26 +4,28 @@ A webpage with a collection of useful widgets. Try it here: [cooper.computer/wid
 
 ## Widgets
 
-- SignOut
-- Time
-- CoinFlip
-- DiceRoll
-- Color
-- Notepad
-- BaseConvert
-- TempConvert
-- DistConvert
-- Stopwatch
-- Timer
-- CaesarShift
-- MorseCode
-- Calculator
-- PrimeCheck
-- RockPaperScissors
-- LinkShorten
-- TextCount
-- ClickCount
-- Background
+- Sign Out: signs user out
+- Time and Date: displays current time and date
+- Coin Flip: randomly flips a coin
+- Dice Roll: randomly rolls a die
+- Random Color: generates a random color
+- Notepad: allow taking of notes
+- Base Convert: converts numbers by base
+- Temp Convert: converts temperature by unit
+- Dist Convert: converts distance by unit
+- Stopwatch: tracks a time interval
+- Timer: counts down from given time
+- Caesar Shift: shifts given text through the Caesar cipher
+- Morse Code: encrypts and decrypts morse code
+- Calculator: evaluate mathematical operations
+- Prime Check: checks whether given number is prime
+- Rock Paper Scissors: random game of rock paper scissors
+- Link Shorten: shortens given link
+- Text Count: counts words and characters in given text
+- Click Count: tracks total clicks and clicks per second
+- Background: allows changing of background
+- Weather: displays weather data of given city
+- Sunrise/Sunset: displays sunrise and sunset time of given city
 
 ## Available Scripts
 
