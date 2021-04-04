@@ -27,6 +27,7 @@ A webpage with a collection of useful widgets. Try it here: [cooper.computer/wid
 - Weather: displays weather data of given city
 - Sunrise/Sunset: displays sunrise and sunset time of given city
 - Words: allows lookup of words relating to given word
+- Random Word: generates a random word and its definition(s)
 
 ## Available Scripts
 
