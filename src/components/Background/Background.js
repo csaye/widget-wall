@@ -52,15 +52,11 @@ function Background() {
   }
 
   async function checkBackgroundURL() {
-    // if background file exists
     const files = await firebase.storage().ref('backgrounds/' + uid).listAll();
-    if (files.items.length > 0) {
-      // get background url
-      getBackgroundURL();
+    // get background url if file exists
+    if (files.items.length > 0) getBackgroundURL();
     // if no file to load, loading done
-    } else {
-      setLoaded(true);
-    }
+    else setLoaded(true);
   }
 
   // check background URL on start

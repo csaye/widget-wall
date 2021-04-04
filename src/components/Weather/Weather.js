@@ -20,16 +20,30 @@ function Weather() {
       throw new Error('Search request failed!');
     }, networkError => console.log(networkError.message))
     .then(jsonResponse => {
-      console.log(jsonResponse);
       setResponse(jsonResponse);
-      // console.log(new Date(jsonResponse.dt*1000+(jsonResponse.timezone*1000))); // plus
     });
   }
 
-  function getLocalDate(timezone) {
-    const now = new Date();
-    const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+  // returns given date shifted for given timezone
+  function getLocalDate(date, timezone) {
+    // get utc by factoring in timezone
+    const utc = date.getTime() + (date.getTimezoneOffset() * 60000);
+    // modify utc by timezone and return
     return new Date(utc + (timezone * 1000));
+  }
+
+  // celsius to fahrenheit
+  function celsiusToFahrenheit(celsius) {
+     let fahrenheit = celsius * (9 / 5) + 32;
+     // round to two decimal places
+     return Math.round(fahrenheit * 100) / 100;
+  }
+
+  // meters per second to miles per hour
+  function msToMiHr(ms) {
+    let miHr = ms * 2.237;
+    // round to two decimal places
+    return Math.round(miHr * 100) / 100;
   }
 
   return (
@@ -49,14 +63,26 @@ function Weather() {
         response &&
         <>
           <p><u>Local Time</u><br />
-          {getLocalDate(response.timezone).toDateString()}
-          <br />
-          {getLocalDate(response.timezone).toLocaleTimeString()}
+            {getLocalDate(new Date(), response.timezone).toDateString()}
+            <br />
+            {getLocalDate(new Date(), response.timezone).toLocaleTimeString()}
           </p>
           <p><u>Coordinates</u><br />{response.coord.lat}, {response.coord.lon}</p>
           <p><u>Weather</u><br />{response.weather[0].main}</p>
           <img src={`http://openweathermap.org/img/w/${response.weather[0].icon}.png`} alt="" />
-          <p><u>Temperature</u><br />{response.main.temp}C, {response.main.temp * (9 / 5) + 32}F</p>
+          <p><u>Temperature</u><br />{response.main.temp}C, {celsiusToFahrenheit(response.main.temp)}F</p>
+          <p><u>Clouds</u><br />{response.clouds.all}%</p>
+          <p><u>Humidity</u><br />{response.main.humidity}%</p>
+          <p><u>Wind</u><br />
+            {response.wind.speed}m/s, {msToMiHr(response.wind.speed)}mi/hr
+            <br />
+            {response.wind.deg}°
+          </p>
+          <p><u>Sunrise/Sunset</u><br />
+          {getLocalDate(new Date(response.sys.sunrise * 1000), response.timezone).toLocaleTimeString()}
+          /
+          {getLocalDate(new Date(response.sys.sunset * 1000), response.timezone).toLocaleTimeString()}
+          </p>
         </>
       }
     </div>
