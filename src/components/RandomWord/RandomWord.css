@@ -1,0 +1,11 @@
+.RandomWord {
+  width: 202px;
+}
+
+.RandomWord .word-text {
+  font-size: 24px;
+}
+
+.RandomWord p {
+  margin: 5px 0;
+}
