@@ -30,6 +30,7 @@ import Weather from '../Weather/Weather.js';
 import SunriseSunset from '../SunriseSunset/SunriseSunset.js';
 import Rhyme from '../Rhyme/Rhyme.js';
 import Synonym from '../Synonym/Synonym.js';
+import Antonym from '../Antonym/Antonym.js';
 
 import './App.css';
 
@@ -68,6 +69,7 @@ function App() {
           <SunriseSunset />
           <Rhyme />
           <Synonym />
+          <Antonym />
         </> :
         <SignIn />
       }
