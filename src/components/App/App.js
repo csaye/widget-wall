@@ -27,6 +27,7 @@ import TextCount from '../TextCount/TextCount.js';
 import ClickCount from '../ClickCount/ClickCount.js';
 import Background from '../Background/Background.js';
 import Weather from '../Weather/Weather.js';
+import SunriseSunset from '../SunriseSunset/SunriseSunset.js';
 
 import './App.css';
 
@@ -62,6 +63,7 @@ function App() {
           <ClickCount />
           <Background />
           <Weather />
+          <SunriseSunset />
         </> :
         <SignIn />
       }

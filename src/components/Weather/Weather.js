@@ -24,14 +24,6 @@ function Weather() {
     });
   }
 
-  // returns given date shifted for given timezone
-  function getLocalDate(date, timezone) {
-    // get utc by factoring in timezone
-    const utc = date.getTime() + (date.getTimezoneOffset() * 60000);
-    // modify utc by timezone and return
-    return new Date(utc + (timezone * 1000));
-  }
-
   // celsius to fahrenheit
   function celsiusToFahrenheit(celsius) {
      let fahrenheit = celsius * (9 / 5) + 32;
@@ -62,26 +54,18 @@ function Weather() {
       {
         response &&
         <>
-          <p><u>Local Time</u><br />
-            {getLocalDate(new Date(), response.timezone).toDateString()}
+          <p><u>Weather</u><br />
+            {response.weather[0].main}
             <br />
-            {getLocalDate(new Date(), response.timezone).toLocaleTimeString()}
+            {response.main.temp}°C, {celsiusToFahrenheit(response.main.temp)}°F
           </p>
-          <p><u>Coordinates</u><br />{response.coord.lat}, {response.coord.lon}</p>
-          <p><u>Weather</u><br />{response.weather[0].main}</p>
           <img src={`http://openweathermap.org/img/w/${response.weather[0].icon}.png`} alt="" />
-          <p><u>Temperature</u><br />{response.main.temp}C, {celsiusToFahrenheit(response.main.temp)}F</p>
-          <p><u>Clouds</u><br />{response.clouds.all}%</p>
-          <p><u>Humidity</u><br />{response.main.humidity}%</p>
-          <p><u>Wind</u><br />
-            {response.wind.speed}m/s, {msToMiHr(response.wind.speed)}mi/hr
+          <p><u>Data</u><br />
+            Cloud cover: {response.clouds.all}%
             <br />
-            {response.wind.deg}°
-          </p>
-          <p><u>Sunrise/Sunset</u><br />
-          {getLocalDate(new Date(response.sys.sunrise * 1000), response.timezone).toLocaleTimeString()}
-          /
-          {getLocalDate(new Date(response.sys.sunset * 1000), response.timezone).toLocaleTimeString()}
+            Humidity: {response.main.humidity}%
+            <br />
+            Wind: {response.wind.speed}m/s, {msToMiHr(response.wind.speed)}mi/hr, {response.wind.deg}°
           </p>
         </>
       }
