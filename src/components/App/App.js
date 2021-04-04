@@ -26,6 +26,7 @@ import LinkShorten from '../LinkShorten/LinkShorten.js';
 import TextCount from '../TextCount/TextCount.js';
 import ClickCount from '../ClickCount/ClickCount.js';
 import Background from '../Background/Background.js';
+import Weather from '../Weather/Weather.js';
 
 import './App.css';
 
@@ -60,6 +61,7 @@ function App() {
           <TextCount />
           <ClickCount />
           <Background />
+          <Weather />
         </> :
         <SignIn />
       }
