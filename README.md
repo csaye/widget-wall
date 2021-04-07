@@ -1,6 +1,6 @@
 # Widget Wall
 
-A webpage with a collection of useful widgets. Try it here: [cooper.computer/widget-wall](https://cooper.computer/widget-wall)
+A webpage with a collection of useful widgets. Try it here: [csaye.com/widget-wall](https://csaye.com/widget-wall)
 
 ## Widgets
 
