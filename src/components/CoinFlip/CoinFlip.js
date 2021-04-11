@@ -3,21 +3,21 @@ import React, { useState } from 'react';
 import './CoinFlip.css';
 
 function CoinFlip() {
-  const [heads, setHeads] = useState(undefined);
+  const [result, setResult] = useState(undefined);
 
   function flipCoin() {
-    const random = Math.random() > 0.5;
-    setHeads(random);
+    setResult('...');
+    setTimeout(() => {
+      const random = Math.random() > 0.5;
+      setResult(random ? 'Heads' : 'Tails');
+    }, 150);
   }
 
   return (
     <div className="CoinFlip widget">
       <h1>Coin Flip</h1>
       <button onClick={flipCoin}>Flip Coin</button>
-      {
-        heads !== undefined &&
-        <p>{heads ? 'Heads' : 'Tails'}</p>
-      }
+      {result && <p>{result}</p>}
     </div>
   );
 }

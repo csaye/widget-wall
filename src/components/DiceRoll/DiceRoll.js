@@ -23,8 +23,11 @@ function DiceRoll() {
 
   function rollDice(e) {
     e.preventDefault();
-    const random = Math.floor(Math.random() * ((intMax + 1) - intMin)) + intMin;
-    setRoll(random);
+    setRoll('...');
+    setTimeout(() => {
+      const random = Math.floor(Math.random() * ((intMax + 1) - intMin)) + intMin;
+      setRoll(random);
+    }, 150);
   }
 
   return (
