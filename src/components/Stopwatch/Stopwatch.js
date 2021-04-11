@@ -8,7 +8,7 @@ function Stopwatch() {
   const [running, setRunning] = useState(false);
   const [startTime, setStartTime] = useState(new Date());
   const [deltaMs, setDeltaMs] = useState(0);
-  const [deltaTime, setDeltaTime] = useState("00:00:00");
+  const [deltaTime, setDeltaTime] = useState("00:00:00.000");
 
   const uid = firebase.auth().currentUser.uid;
   const stopwatchRef = firebase.firestore().collection('stopwatch').doc(uid);
@@ -16,7 +16,12 @@ function Stopwatch() {
   function formatTime(ms) {
     let hours = 0;
     let minutes = 0;
-    let seconds = Math.floor(ms / 1000);
+    let seconds = 0;
+    let milliseconds = ms;
+    if (milliseconds > 999) {
+      seconds = Math.floor(milliseconds / 1000);
+      milliseconds %= 1000;
+    }
     if (seconds > 59) {
       minutes = Math.floor(seconds / 60);
       seconds %= 60;
@@ -28,12 +33,14 @@ function Stopwatch() {
     let hh = hours.toString();
     let mm = minutes.toString();
     let ss = seconds.toString();
+    let ll = milliseconds.toString();
     // pad with zeroes
     if (hh.length < 2) hh = '0' + hh;
     if (mm.length < 2) mm = '0' + mm;
     if (ss.length < 2) ss = '0' + ss;
+    while (ll.length < 3) ll = '0' + ll;
     // join with colon
-    return [hh, mm, ss].join(':');
+    return [hh, mm, ss].join(':') + "." + ll;
   }
 
   useEffect(() => {
@@ -45,7 +52,7 @@ function Stopwatch() {
         const timeDelta = formatTime(msDelta);
         setDeltaTime(timeDelta);
       }
-    }, 100);
+    }, 50);
     return () => clearInterval(timeInterval);
   }, [running, startTime]);
 
@@ -97,7 +104,7 @@ function Stopwatch() {
     const timeStart = new Date().getTime();
     setDeltaMs(0);
     setStartTime(timeStart);
-    setDeltaTime("00:00:00");
+    setDeltaTime("00:00:00.000");
     // update firebase
     stopwatchRef.set({
       running: running,
