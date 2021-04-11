@@ -8,6 +8,8 @@ function RandomWord() {
 
   async function getRandomWord() {
     const url = `https://random-word-api.herokuapp.com/word`;
+    setWord('...');
+    setDefinitions(['...']);
     // request from random-word-api
     await fetch(url).then(response => {
       if (response.ok) return response.json();
@@ -32,8 +34,10 @@ function RandomWord() {
             const defWords = def.split('	');
             return `(${defWords[0]}) ${defWords.slice(1).join(' ')}`;
           });
+          setDefinitions(defs);
+        } else {
+          setDefinitions(['No definitions found.']);
         }
-        setDefinitions(defs);
       });
     });
   }
