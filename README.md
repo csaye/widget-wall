@@ -28,6 +28,7 @@ A webpage with a collection of useful widgets. Try it here: [csaye.com/widget-wa
 - Sunrise/Sunset: displays sunrise and sunset time of given city
 - Words: allows lookup of words relating to given word
 - Random Word: generates a random word and its definition(s)
+- Dictionary: allows lookup of word definitions
 
 ## Available Scripts
 

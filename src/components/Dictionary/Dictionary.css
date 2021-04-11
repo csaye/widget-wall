@@ -1,0 +1,11 @@
+.Dictionary {
+  width: 202px;
+}
+
+.Dictionary .word-text {
+  font-size: 24px;
+}
+
+.Dictionary p {
+  margin: 10px 0;
+}
